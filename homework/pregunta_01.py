@@ -14,3 +14,12 @@ def pregunta_01():
     214
 
     """
+
+    with open("data.csv", "r") as file:
+        lines  = file.readlines()
+    
+    result = 0
+    for line in lines:
+        result += line[1]
+    
+    print(result)

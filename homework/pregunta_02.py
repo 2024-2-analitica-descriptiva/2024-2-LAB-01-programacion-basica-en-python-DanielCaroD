@@ -15,3 +15,9 @@ def pregunta_02():
     [('A', 8), ('B', 7), ('C', 5), ('D', 6), ('E', 14)]
 
     """
+
+    with open("data.csv", "r") as file:
+        lines = file.readlines
+    
+    for line in lines:
+        

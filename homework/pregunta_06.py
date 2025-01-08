@@ -30,7 +30,7 @@ def pregunta_06():
     with open("files\input\data.csv", "r") as file:
         lines = file.readlines()
 
-    data = {"aaa":[], "bbb":[], "ccc":[], "ddd":[], "eee":[], "fff":[], "ggg":[], "hhh":[], "iii":[], "jjj":[]}
+    data = {}
 
     for line in lines:
         columns = line.split() 
@@ -40,8 +40,11 @@ def pregunta_06():
             i = item.split(":")
             key = i[0]
             value = int(i[1])
+
+            if key not in data:
+                data[key] = []
             data[key].append(value)
     
-    result = [(key, min(values), max(values)) for key, values in data.items()]
+    result = sorted([(key, min(values), max(values)) for key, values in data.items()])
 
     return result

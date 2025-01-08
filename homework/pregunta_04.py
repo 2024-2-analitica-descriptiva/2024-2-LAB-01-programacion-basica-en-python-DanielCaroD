@@ -30,13 +30,16 @@ def pregunta_04():
     with open("files\input\data.csv", "r") as file:
         lines = file.readlines()
     
-    data = {"01": 0, "02": 0, "03": 0, "04": 0, "05": 0, "06": 0, "07": 0, "08": 0, "09": 0, "10": 0, "11": 0, "12": 0}
+    data = {}
 
     for line in lines:
         columns = line.split()
         month = columns[2].split("-")[1]
+        
+        if month not in data:
+            data[month] = 0
         data[month] += 1
     
-    result = [(key, value) for key,value in data.items()]
+    result = sorted([(key, value) for key,value in data.items()])
 
     return result

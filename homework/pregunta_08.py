@@ -27,3 +27,21 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+
+    with open("files\input\data.csv", "r") as file:
+        lines = file.readlines()
+    
+    data = {}
+
+    for line in lines:
+        columns = line.split()
+        num = int(columns[1])
+        letter = columns[0]
+
+        if num not in data:
+            data[num] = set()
+        data[num].add(letter)
+    
+    result = sorted([(key, sorted(value)) for key,value in data.items()])
+
+    return result

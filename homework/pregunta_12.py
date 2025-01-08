@@ -15,3 +15,24 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
+
+    with open("files\input\data.csv", "r") as file:
+        lines = file.readlines()
+
+    data = {}
+
+    for line in lines:
+        columns = line.split()
+        letter = columns[0]
+        col5 = columns[4].split(",")
+
+        for codes in col5:
+            num = int(codes.split(":")[1])
+            
+            if letter not in data:
+                data[letter] = 0
+            data[letter] += num
+    
+    result = dict(sorted(data.items()))
+
+    return result

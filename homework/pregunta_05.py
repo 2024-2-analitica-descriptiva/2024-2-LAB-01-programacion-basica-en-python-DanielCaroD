@@ -19,15 +19,18 @@ def pregunta_05():
     with open("files\input\data.csv", "r") as file:
         lines = file.readlines()
     
-    data = {"A":[], "B":[], "C":[], "D":[], "E":[]}
+    data = {}
 
     for line in lines:
         columns = line.split()
         letter = columns[0]
         num = int(columns[1])
+        
+        if letter not in data:
+            data[letter] = []
 
         data[letter].append(num)
     
-    result = [(key, max(values), min(values)) for key,values in data.items()]
+    result = sorted([(key, max(values), min(values)) for key,values in data.items()])
 
     return result

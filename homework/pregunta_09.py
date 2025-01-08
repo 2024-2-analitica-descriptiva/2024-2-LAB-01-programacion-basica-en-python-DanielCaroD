@@ -24,3 +24,21 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+
+    with open("files\input\data.csv", "r") as file:
+        lines = file.readlines()
+    
+    data = {}
+
+    for line in lines:
+        columns = line.split()
+        codes = columns[4].split(",")
+
+        for item in codes:
+            key = item.split(":")[0]
+
+            if key not in data:
+                data[key] = 0
+            data[key] += 1
+
+    return data

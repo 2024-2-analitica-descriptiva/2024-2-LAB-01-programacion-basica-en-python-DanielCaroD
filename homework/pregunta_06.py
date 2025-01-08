@@ -26,3 +26,22 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+
+    with open("files\input\data.csv", "r") as file:
+        lines = file.readlines()
+
+    data = {"aaa":[], "bbb":[], "ccc":[], "ddd":[], "eee":[], "fff":[], "ggg":[], "hhh":[], "iii":[], "jjj":[]}
+
+    for line in lines:
+        columns = line.split() 
+        col5 = (columns[4].split(","))
+
+        for item in col5:
+            i = item.split(":")
+            key = i[0]
+            value = int(i[1])
+            data[key].append(value)
+    
+    result = [(key, min(values), max(values)) for key, values in data.items()]
+
+    return result

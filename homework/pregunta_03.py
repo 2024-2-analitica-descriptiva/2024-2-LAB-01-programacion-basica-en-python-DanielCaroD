@@ -15,3 +15,18 @@ def pregunta_03():
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
 
     """
+
+    with open("files\input\data.csv", "r") as file:
+        lines = file.readlines()
+    
+    data = {"A":0, "B":0, "C":0, "D":0, "E":0}
+
+    for line in lines:
+        columns = line.split()
+        letter = columns[0]
+        num = int(columns[1])
+        data[letter] += num
+    
+    result = [(key, value) for key, value in data.items()]
+
+    return result

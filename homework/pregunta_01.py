@@ -15,11 +15,12 @@ def pregunta_01():
 
     """
 
-    with open("data.csv", "r") as file:
+    with open("files\input\data.csv", "r") as file:
         lines  = file.readlines()
     
     result = 0
     for line in lines:
-        result += line[1]
+        columns = line.split()
+        result += int(columns[1])
     
-    print(result)
+    return result

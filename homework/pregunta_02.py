@@ -16,8 +16,16 @@ def pregunta_02():
 
     """
 
-    with open("data.csv", "r") as file:
-        lines = file.readlines
-    
+    with open("files\input\data.csv", "r") as file:
+        lines = file.readlines()
+
+    data = {"A":0, "B":0, "C":0, "D":0, "E":0}
+
     for line in lines:
-        
+        columns = line.split()
+        letter = columns[0]
+        data[letter] += 1
+    
+    result = [(key, value) for key, value in data.items()]
+    
+    return result
